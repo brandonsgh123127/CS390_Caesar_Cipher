@@ -1,10 +1,13 @@
 import sys
-
-
+'''
+Caesar Cipher Implementation
+Author: Brandon Spada & Leonardo Pegeas
+'''
 def main():
     in_txt = str(input('Please input text to cipher:'))
     out_txt = []
     print('Input: ', in_txt)
+    # Verify key is correct
     try:
         _cipherkey = int(input('Please input cipher key (-25 - 25)'))
         _cipherkey = _cipherkey % 26 if _cipherkey > 0 else _cipherkey % -26
@@ -12,6 +15,10 @@ def main():
         print('Unknown value, exiting...')
         sys.exit(-1)
     print('Key: ', _cipherkey)
+    '''
+    For each letter in the input text, shift ascii number by value of cipher key,
+    then append to a list that will contain new values.
+    '''
     for i in in_txt:
         # Space stays the same
         if ord(i) == 32:
@@ -28,7 +35,13 @@ def main():
             out_txt.append(chr(ord(i) + _cipherkey + 26))
         else:
             out_txt.append(chr(ord(i) + _cipherkey))
-    print(''.join(map(str, out_txt)))
+    print('Encrypted: ', ''.join(map(str, out_txt)))
+
+    '''
+    Decryption phase: TO BE IMPLEMENTED:
+                        We have encryption variable key, just get opposite value of key and apply another loop
+                        to reverse encryption.
+    '''
 
 
 if __name__ == '__main__':
