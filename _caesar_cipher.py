@@ -21,7 +21,6 @@ def encryption(in_txt, _cipherkey):
         else:
             out_txt.append(chr(ord(i) + _cipherkey))
 
-    print('Encrypted: ', ''.join(map(str, out_txt)))
     return ''.join(map(str, out_txt))
 
 
@@ -39,11 +38,10 @@ def decryption(in_txt, _cipherkey):
             out_txt.append(chr((ord(i) - _cipherkey - 65) % 26 + 65))
         else:
             out_txt.append(chr(ord(i) - _cipherkey))
-    print('Decrypted: ', ''.join(map(str, out_txt)))
+    return ''.join(map(str, out_txt))
 
 
 def main():
-    e_txt = ""
     in_txt = str(input('Please input text to cipher: '))
     print('Input: ', in_txt)
     # Verify key is correct
@@ -59,12 +57,9 @@ def main():
     then append to a list that will contain new values.
     '''
     e_txt = encryption(in_txt, _cipherkey)
-    decryption(e_txt, _cipherkey)
-    '''
-    Decryption phase: TO BE IMPLEMENTED:
-                        We have encryption variable key, just get opposite value of key and apply another loop
-                        to reverse encryption.
-    '''
+    print('Encrypted: ', e_txt)
+    _dtxt = decryption(e_txt, _cipherkey)
+    print('Decrypted: ', _dtxt)
 
 
 if __name__ == '__main__':
